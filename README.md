@@ -7,7 +7,7 @@ This is the XO game project. Created using these technologies
 
 ## Tech Stack
 
-**Frontend:** React, Redux, Material UI, Ant Design
+**Frontend:** React, Redux Toolkit, Material UI, Ant Design
 
 **Backend:** Node, Express, Docker
 
@@ -22,11 +22,11 @@ This is the XO game project. Created using these technologies
 - Can delete playing history.
 
 
-## Installation
+## Requirements
 
 Install Docker desktop from https://www.docker.com/products/docker-desktop/
 
-Another installation is in the Readme of each folder.
+Install Node.js from https://nodejs.org/en
     
 ## Run Locally
 
@@ -52,7 +52,7 @@ After you go to the project directory. It will show 2 folders in it.
 - Go to the backtend directory
 
 ```bash
-  cd backtend
+  cd Backtend
 ```
 
 

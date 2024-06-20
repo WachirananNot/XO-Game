@@ -1,46 +1,63 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# XO Game - Frontend
 
-## Available Scripts
+This is the XO Game Frontend built with React Typescript, Redux Toolkit, Material UI and Ant design.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Frontend:** React, Redux, Material UI, Ant Design
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project, you will need to add the following environment variables to your .env file
+```bash
+REACT_APP_API_ENDPOINT = 'http://localhost:8080'
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Run Locally
 
-### `npm run eject`
+After you come to frontend directory
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Start the project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+  npm start
+```
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Design
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I have designed 1 page on the website as a 3-section grid as follows.
+
+- GridLeft
+    - Textfield for entering the board size information. Only odd numbers can be entered.
+    - Indicates whose turn it is while playing.
+    - Display the game results at the end.
+
+- GridCenter
+    - Show the game grid box, which can be pressed if the game is not finished. It will display a table showing the playing history if you choose to view it.
+    - There is a button to start a new game under the table. After the game ends, there will be a button to save your playing history. When you click to view the playing history, there will be buttons to navigate forward and backward through the turns.
+
+- GridRight
+    - The Play History Box shows the order of playing history, the size of the table, and the winner of each game. It includes buttons to view playing history or delete history.
+
+## Algorithm
+- Retrieve the game results Separated into 3 cases.
+    - Row -> First, check the latest player's turn. Then, iterate through the row where the player just clicked to determine if there are any different values. If all values in the row are the same, it means that player wins.
+    - Column -> After seeing which player just took their turn, the game checks the column where the player placed their mark. It goes through that column to see if all the marks in it are the same. If they are, that player wins.
+    - Diagonal -> After seeing which player just played, the game checks the diagonal where that player put their mark. It looks through that diagonal to see if all the marks in it are the same. If they are, that player wins.
+
+- Save game history once the game concludes.
+    
+    Record the moves of both players in an array during each turn. When the game ends, save the positions where each player won in another array. When the player chooses to save the game history, send both arrays along with the game results to the backend. Convert the arrays to strings and store them in the database.
