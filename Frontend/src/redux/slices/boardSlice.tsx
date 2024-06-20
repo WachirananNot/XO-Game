@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
-import { HOST } from "../../components/variables";
+
 
 function checkWinner(
   boxArray: any[],
@@ -98,7 +98,7 @@ function checkWinner(
 export const fetchData = createAsyncThunk("data/fetch", async () => {
   try {
     const response = await axios.get(
-      `${HOST}/replay`,
+      `${process.env.REACT_APP_API_ENDPOINT}/replay`,
     );
     return response.data.values;
   } catch (error) {

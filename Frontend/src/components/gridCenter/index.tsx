@@ -8,7 +8,6 @@ import {
 } from "../../redux/slices/boardSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import axios from "axios";
-import { HOST } from "../variables";
 import { useState } from "react";
 
 export default function GridCenter() {
@@ -63,7 +62,7 @@ export default function GridCenter() {
     }
     axios({
       method: "post",
-      url: `${HOST}/replay`,
+      url: `${process.env.REACT_APP_API_ENDPOINT}/replay`,
       data: saveReplay,
       
     })

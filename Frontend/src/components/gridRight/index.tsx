@@ -2,7 +2,6 @@ import { Typography, Box, Button } from "@mui/material";
 import { fetchData, setSelectedReplay } from "../../redux/slices/boardSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import axios from "axios";
-import { HOST } from "../variables";
 import { Popconfirm } from "antd";
 import { useState } from "react";
 
@@ -26,7 +25,7 @@ export default function GridRight() {
   function deleteReplay(id: number, i: number) {
     axios({
       method: "delete",
-      url: `${HOST}/replay/${id}`,
+      url: `${process.env.REACT_APP_API_ENDPOINT}/replay/${id}`,
     })
       .then((res) => {
         return res.data;
