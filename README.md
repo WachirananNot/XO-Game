@@ -52,7 +52,7 @@ After you go to the project directory. It will show 2 folders in it.
 - Go to the backtend directory
 
 ```bash
-  cd Backtend
+  cd Backend
 ```
 
 
